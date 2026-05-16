@@ -321,6 +321,11 @@ elif st.session_state.current_page == "Findings":
                     sns.boxplot(data=plot_df, x='Total Score', y='Parental Education', color='#2E7D6B', ax=ax)
                     st.write("#### Does Parental Education correlate with higher scores?")
 
+                  elif biv_option == "Lunch vs Total Score" and 'Lunch' in df_clean.columns:
+                    plot_df = df_clean.dropna(subset=['Lunch', 'Total Score'])
+                    sns.boxplot(data=plot_df, x='Lunch', y='Total Score', color='#2E7D6B', ax=ax)
+                    st.write("#### Does Lunch Type relate to Total Score?")
+                      
                 st.pyplot(fig)
                 st.info(
                     f"💡 **Interpretation:** [Provide insights on how the selected variable ({biv_option.split(' vs ')[0]}) impacts Total Score based on the plot medians, quartiles, and spread.]")
